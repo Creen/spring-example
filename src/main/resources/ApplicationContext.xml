@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--  For annotation @Component into Jedi class. Bean below created automatically  -->
+    <!--  <bean id='jedi' class='com.kovalenko.spring.Jedi'/>  -->
+    <context:component-scan base-package="com.kovalenko.spring"/>
+
+    <bean id="stormtrooper" class="com.kovalenko.spring.Stormtrooper">
+    <constructor-arg ref="weapon"/>
+    </bean>
+
+    <bean id="flag" class="com.kovalenko.spring.Flag">
+        <constructor-arg value="WHITE"/>
+    </bean>
+
+    <bean id="weapon" class="com.kovalenko.spring.Weapon">
+        <constructor-arg value="Blaster-Bean"/>
+    </bean>
+
+</beans>
