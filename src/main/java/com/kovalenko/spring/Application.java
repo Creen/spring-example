@@ -10,10 +10,15 @@ public class Application {
         System.out.println("------------XML-------------");
         ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
         Stormtrooper stormtrooperBean = context.getBean("stormtrooper", Stormtrooper.class);
+        Stormtrooper stormtrooperBean2 = context.getBean("stormtrooper", Stormtrooper.class);
         stormtrooperBean.getInHands();
+        System.out.println(stormtrooperBean.getName());
+        System.out.println(stormtrooperBean == stormtrooperBean2);
 
         System.out.println("--------XML + Annotation----------");
         Jedi jedi = context.getBean("jedi", Jedi.class);
+        Jedi jedi2 = context.getBean("jedi", Jedi.class);
+        System.out.println(jedi == jedi2);
         jedi.getInHands();
     }
 }

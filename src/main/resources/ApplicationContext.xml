@@ -13,8 +13,9 @@
     <!--  <bean id='jedi' class='com.kovalenko.spring.Jedi'/>  -->
     <context:component-scan base-package="com.kovalenko.spring"/>
 
-    <bean id="stormtrooper" class="com.kovalenko.spring.Stormtrooper">
+    <bean id="stormtrooper" class="com.kovalenko.spring.Stormtrooper" scope="prototype">
         <constructor-arg ref="weapon"/>
+        <property name="name" value="NameStormtrooper"/>
     </bean>
 
     <bean id="flag" class="com.kovalenko.spring.Flag">
