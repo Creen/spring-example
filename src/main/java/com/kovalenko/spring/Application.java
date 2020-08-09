@@ -6,12 +6,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Application {
 
     public static void main(String[] args) {
-        Stormtrooper stormtrooper = new Stormtrooper(new Weapon("blaster"));
-        stormtrooper.getInHands();
 
         System.out.println("------------XML-------------");
         ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
-        Stormtrooper stormtrooperBean = (Stormtrooper) context.getBean("stormtrooper");
+        Stormtrooper stormtrooperBean = context.getBean("stormtrooper", Stormtrooper.class);
         stormtrooperBean.getInHands();
 
         System.out.println("--------XML + Annotation----------");
