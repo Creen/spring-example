@@ -2,7 +2,7 @@ package com.kovalenko.spring;
 
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Flag implements Subject {
 
     Color color;

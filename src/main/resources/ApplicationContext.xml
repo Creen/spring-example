@@ -17,9 +17,9 @@
         <constructor-arg ref="weapon"/>
     </bean>
 
-<!--    <bean id="flag" class="com.kovalenko.spring.Flag">-->
+    <bean id="flag" class="com.kovalenko.spring.Flag">
 <!--        <constructor-arg value="WHITE"/>-->
-<!--    </bean>-->
+    </bean>
 
 <!--    <bean id="weapon" class="com.kovalenko.spring.Weapon">-->
 <!--        <constructor-arg value="Blaster-Bean"/>-->
