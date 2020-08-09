@@ -21,6 +21,10 @@
     <bean id="flag" class="com.kovalenko.spring.Flag">
 <!--        <constructor-arg value="WHITE"/>-->
     </bean>
+<!--    @Bean // id="getSith" or id="sith"-->
+<!--    public Sith getSith() {-->
+<!--    return new Sith(); //class="com.kovalenko.spring.annconfig.Sith"-->
+<!--    }-->
 
 <!--    <bean id="weapon" class="com.kovalenko.spring.Weapon">-->
 <!--        <constructor-arg value="Blaster-Bean"/>-->
