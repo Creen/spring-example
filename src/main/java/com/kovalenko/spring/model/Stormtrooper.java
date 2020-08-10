@@ -5,14 +5,8 @@ import lombok.Data;
 @Data
 public class Stormtrooper {
 
+    private Long id;
     private String name;
-    private String weapon;
-
-    public Stormtrooper() {
-    }
-
-    public Stormtrooper(String name, String weapon) {
-        this.name = name;
-        this.weapon = weapon;
-    }
+    private Integer age;
+    private Weapon weapon;
 }
