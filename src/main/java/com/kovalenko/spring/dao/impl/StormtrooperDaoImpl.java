@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
+//@Repository
 public class StormtrooperDaoImpl implements StormtrooperDao {
 
   private static final String GET_ALL_STORMTROOPERS =
@@ -40,6 +40,7 @@ public class StormtrooperDaoImpl implements StormtrooperDao {
 
   @Autowired
   private Connection connection;
+
 
   @Override
   public List<Stormtrooper> getAll() {

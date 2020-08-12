@@ -5,16 +5,20 @@ import com.kovalenko.spring.exeption.StormtrooperException;
 import com.kovalenko.spring.model.Stormtrooper;
 import com.kovalenko.spring.service.StormtrooperService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class StormtrooperServiceImpl implements StormtrooperService {
 
   private final StormtrooperDao stormtrooperDao;
 
+  public StormtrooperServiceImpl(@Qualifier("StormtrooperDaoImplJdbcTemplate") StormtrooperDao stormtrooperDao) {
+    this.stormtrooperDao = stormtrooperDao;
+  }
 
   @Override
   public List<Stormtrooper> getAll() {
