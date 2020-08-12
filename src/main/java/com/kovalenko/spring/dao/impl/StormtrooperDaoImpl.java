@@ -6,6 +6,8 @@ import com.kovalenko.spring.model.Stormtrooper;
 import com.kovalenko.spring.model.Weapon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,14 +39,14 @@ public class StormtrooperDaoImpl implements StormtrooperDao {
       "UPDATE weapon SET weapon_name=? WHERE stormtrooper_id=?";
 
   @Autowired
-  private DatabaseConfiguration connection;
+  private Connection connection;
 
   @Override
   public List<Stormtrooper> getAll() {
 
     List<Stormtrooper> stormtroopers = new ArrayList<>();
 
-    try (PreparedStatement preparedStatement = connection.getConnection().prepareStatement(GET_ALL_STORMTROOPERS);
+    try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_STORMTROOPERS);
         ResultSet resultSet = preparedStatement.executeQuery()){
 
       while (resultSet.next()) {
@@ -71,7 +73,7 @@ public class StormtrooperDaoImpl implements StormtrooperDao {
   @Override
   public void save(Stormtrooper stormtrooper) {
 
-    try (PreparedStatement preparedStatement = connection.getConnection().prepareStatement(
+    try (PreparedStatement preparedStatement = connection.prepareStatement(
         INSERT_STORMTROOPER_NAME_AND_AGE, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
       preparedStatement.setString(1, stormtrooper.getName());
@@ -82,7 +84,7 @@ public class StormtrooperDaoImpl implements StormtrooperDao {
       if (executeUpdate > 0) {
 
         try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-            PreparedStatement preparedStatement1 = connection.getConnection().prepareStatement(
+            PreparedStatement preparedStatement1 = connection.prepareStatement(
                 INSETN_STORMTROOPER_WEAPON)) {
 
           if (generatedKeys.next()) {
@@ -103,7 +105,7 @@ public class StormtrooperDaoImpl implements StormtrooperDao {
   @Override
   public void deleteById(Long id) {
 
-    try (PreparedStatement preparedStatement = connection.getConnection().prepareStatement(DELETE_STORMTROOPER)) {
+    try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_STORMTROOPER)) {
 
       preparedStatement.setLong(1, id);
       preparedStatement.executeUpdate();
@@ -116,7 +118,7 @@ public class StormtrooperDaoImpl implements StormtrooperDao {
   @Override
   public void update(Stormtrooper stormtrooper) {
 
-    try (PreparedStatement preparedStatement = connection.getConnection().prepareStatement(
+    try (PreparedStatement preparedStatement = connection.prepareStatement(
         UPDATE_STORMTROOPER_NAME_AND_AGE, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
       preparedStatement.setString(1, stormtrooper.getName());
@@ -128,7 +130,7 @@ public class StormtrooperDaoImpl implements StormtrooperDao {
       if (executeUpdate > 0) {
 
         try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-            PreparedStatement preparedStatement1 = connection.getConnection().prepareStatement(
+            PreparedStatement preparedStatement1 = connection.prepareStatement(
                 UPDATE_STORMTROOPER_WEAPON)) {
 
           if (generatedKeys.next()) {
