@@ -22,23 +22,20 @@ public class StormtrooperServiceImpl implements StormtrooperService {
   }
 
   @Override
-  public Stormtrooper getNewStormtrooper() {
-    return stormtrooperDao.getNewStormtrooper();
-  }
-
-  @Override
   public Stormtrooper updateById(Long id) {
+
     Stormtrooper stormtrooperToUpdate = getAll().stream()
         .filter(stormtrooper -> stormtrooper.getId().equals(id))
         .findFirst()
         .orElse(null);
-    getAll().remove(stormtrooperToUpdate);
+
+    stormtrooperDao.update(stormtrooperToUpdate);
     return stormtrooperToUpdate;
   }
 
   @Override
   public void deleteById(Long id) {
-    getAll().removeIf(stormtrooper -> stormtrooper.getId().equals(id));
+    stormtrooperDao.deleteById(id);
   }
 
   @Override
@@ -46,14 +43,16 @@ public class StormtrooperServiceImpl implements StormtrooperService {
     if (checkIfStormtrooperNameIsExist(stormtrooper)) {
       throw new StormtrooperException("Stormtrooper with that name is already exist");
     } else {
-      getAll().add(stormtrooper);
+      stormtrooperDao.save(stormtrooper);
     }
   }
 
   private boolean checkIfStormtrooperNameIsExist(Stormtrooper stormtrooper) {
+
     List<Stormtrooper> stormtroopers = getAll().stream()
         .filter(stormtrooperDB -> stormtrooperDB.getName().equals(stormtrooper.getName()))
         .collect(Collectors.toList());
+
     if (!stormtroopers.isEmpty()) {
       return true;
     } else {

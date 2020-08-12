@@ -8,8 +8,6 @@ public interface StormtrooperService {
 
   List<Stormtrooper> getAll();
 
-  Stormtrooper getNewStormtrooper();
-
   void deleteById(Long id);
 
   Stormtrooper updateById(Long id);

@@ -8,5 +8,9 @@ public interface StormtrooperDao {
 
   List<Stormtrooper> getAll();
 
-  Stormtrooper getNewStormtrooper();
+  void save (Stormtrooper stormtrooper);
+
+  void deleteById (Long id);
+
+  void update (Stormtrooper stormtrooper);
 }
